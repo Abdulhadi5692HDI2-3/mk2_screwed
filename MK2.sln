@@ -7,6 +7,7 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MK2", "MK2.vcxproj", "{9332
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4B5EF131-F53D-49C4-85B0-E5183DB76EA9}"
 	ProjectSection(SolutionItems) = preProject
+		clean.bat = clean.bat
 		Makefile = Makefile
 		run.bat = run.bat
 	EndProjectSection

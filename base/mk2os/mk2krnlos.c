@@ -4,19 +4,20 @@
 #include <bootboot.h>
 #include <mk2/serial.h>
 #include <printf.h>
+#include <mk2/mk2krnlos.h>
+#include <mk2/screen/screen.h>
+#include <mk2/console/console.h>
+#include <mk2/mem/memory.h>
 #endif
 #ifdef _MSC_VER
 #include "../inc/bootboot.h"
 #include "../inc/mk2/serial.h"
 #include "../../external/printf.h"
+#include "../inc/mk2/mk2krnlos.h"
+#include "../inc/mk2/screen/screen.h"
+#include "../inc/mk2/console/console.h"
+#include "../inc/mk2/mem/memory.h"
 #endif
-
-typedef enum _MK2_STATUS {
-	OK,
-	ERROR,
-	UNSUPPORTED,
-	UNINITALIZED,
-} MK2_STATUS;
 
 MK2_STATUS Mk2EntryPoint();
 
@@ -31,6 +32,9 @@ void _start() {
 
 // printf just prints to the serial port for now!
 MK2_STATUS Mk2EntryPoint() {
-	printf("\r\nHello, serial World!\r\n");
+	printf("Hello World!\r\n");
+	printf("Screen Resolution: %dx%d\r\n", bootboot.fb_width, bootboot.fb_height);
+	mem_init();
+	printf("Initalized the heap!\r\n");
 	return OK;
 }

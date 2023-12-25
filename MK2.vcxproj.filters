@@ -19,6 +19,9 @@
     <Filter Include="Header Files\mk2\console">
       <UniqueIdentifier>{4b9d2c37-0ae7-485f-9373-b9987689aa8c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mk2\screen">
+      <UniqueIdentifier>{d4b6d53b-e209-4e9b-aa2b-87c3b26c19e7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base\mk2os\mk2krnlos.c">
@@ -31,6 +34,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="base\mk2os\console.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="base\mk2os\screen.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -46,6 +52,12 @@
     </ClInclude>
     <ClInclude Include="base\inc\mk2\console\console.h">
       <Filter>Header Files\mk2\console</Filter>
+    </ClInclude>
+    <ClInclude Include="base\inc\mk2\screen\screen.h">
+      <Filter>Header Files\mk2\screen</Filter>
+    </ClInclude>
+    <ClInclude Include="base\inc\mk2\mk2krnlos.h">
+      <Filter>Header Files\mk2</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
