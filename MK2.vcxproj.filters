@@ -22,6 +22,9 @@
     <Filter Include="Header Files\mk2\screen">
       <UniqueIdentifier>{d4b6d53b-e209-4e9b-aa2b-87c3b26c19e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mk2\mem">
+      <UniqueIdentifier>{d572b5c6-6a3d-4e52-834d-50b03105c9cf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base\mk2os\mk2krnlos.c">
@@ -37,6 +40,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="base\mk2os\screen.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="base\mk2os\memory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -58,6 +64,9 @@
     </ClInclude>
     <ClInclude Include="base\inc\mk2\mk2krnlos.h">
       <Filter>Header Files\mk2</Filter>
+    </ClInclude>
+    <ClInclude Include="base\inc\mk2\mem\memory.h">
+      <Filter>Header Files\mk2\mem</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

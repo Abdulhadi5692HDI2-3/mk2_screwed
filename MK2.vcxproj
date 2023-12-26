@@ -84,6 +84,7 @@
   <ItemGroup>
     <ClCompile Include="base\mk2os\console.c" />
     <ClCompile Include="base\mk2os\ioasm.c" />
+    <ClCompile Include="base\mk2os\memory.c" />
     <ClCompile Include="base\mk2os\mk2krnlos.c" />
     <ClCompile Include="base\mk2os\screen.c" />
     <ClCompile Include="base\mk2os\serial.c" />
@@ -92,6 +93,7 @@
     <ClInclude Include="base\inc\bootboot.h" />
     <ClInclude Include="base\inc\mk2\console\console.h" />
     <ClInclude Include="base\inc\mk2\ioasm.h" />
+    <ClInclude Include="base\inc\mk2\mem\memory.h" />
     <ClInclude Include="base\inc\mk2\mk2krnlos.h" />
     <ClInclude Include="base\inc\mk2\screen\screen.h" />
     <ClInclude Include="base\inc\mk2\serial.h" />

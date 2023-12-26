@@ -18,7 +18,7 @@ mk2krnlos.x86_64.elf:
 	x86_64-elf-gcc $(CFLAGS) -mno-red-zone -c base/mk2os/screen.c -o screen.o
 	x86_64-elf-gcc $(CFLAGS) -mno-red-zone -c base/mk2os/memory.c -o memory.o
 	x86_64-elf-gcc $(CFLAGS) -mno-red-zone -c external/printf.c -o printf.o
-	x86_64-elf-ld -r -b binary -o font.o fonts/font.psf
+	x86_64-elf-ld -r -b binary -o font.o fonts/CascadiaCode.sfn
 	x86_64-elf-ld $(LDFLAGS) mk2krnlos.o memory.o font.o ioasm.o serial.o screen.o console.o printf.o -o mk2krnlos.x86_64.elf
 	x86_64-elf-strip $(STRIPFLAGS) mk2krnlos.x86_64.elf
 
