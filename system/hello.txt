@@ -1,0 +1,3 @@
+Hello.txt -- the best text file ever ;)
+Hello World!
+THE END! -- eof

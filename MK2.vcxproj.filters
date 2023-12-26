@@ -25,6 +25,12 @@
     <Filter Include="Header Files\mk2\mem">
       <UniqueIdentifier>{d572b5c6-6a3d-4e52-834d-50b03105c9cf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\mk2\tar">
+      <UniqueIdentifier>{54c3071e-0ea8-4eab-958f-4ee89735f28f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\mk2\vfs">
+      <UniqueIdentifier>{da367782-946a-4c34-8720-65327cb65cd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="base\mk2os\mk2krnlos.c">
@@ -43,6 +49,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="base\mk2os\memory.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="base\mk2os\tar.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="base\mk2os\vfs.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -67,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="base\inc\mk2\mem\memory.h">
       <Filter>Header Files\mk2\mem</Filter>
+    </ClInclude>
+    <ClInclude Include="base\inc\mk2\tar\tar.h">
+      <Filter>Header Files\mk2\tar</Filter>
+    </ClInclude>
+    <ClInclude Include="base\inc\mk2\vfs\vfs.h">
+      <Filter>Header Files\mk2\vfs</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

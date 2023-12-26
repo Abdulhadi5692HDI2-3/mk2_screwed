@@ -8,6 +8,7 @@
 #include <mk2/screen/screen.h>
 #include <mk2/console/console.h>
 #include <mk2/mem/memory.h>
+#include <mk2/tar/tar.h>
 #endif
 #ifdef _MSC_VER
 #include "../inc/bootboot.h"
@@ -17,6 +18,7 @@
 #include "../inc/mk2/screen/screen.h"
 #include "../inc/mk2/console/console.h"
 #include "../inc/mk2/mem/memory.h"
+#include "../inc/mk2/tar/tar.h"
 #endif
 
 MK2_STATUS Mk2EntryPoint();
@@ -36,5 +38,6 @@ MK2_STATUS Mk2EntryPoint() {
 	printf("Screen Resolution: %dx%d\r\n", bootboot.fb_width, bootboot.fb_height);
 	mem_init();
 	printf("Initalized the heap!\r\n");
+	printf("Total files in initrd: %d", totalfiles(bootboot.initrd_ptr));
 	return OK;
 }
