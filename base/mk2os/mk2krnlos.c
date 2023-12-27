@@ -44,5 +44,6 @@ MK2_STATUS Mk2EntryPoint() {
 	printf("Testing memory allocation!\r\n");
 	int a = malloc(32);
 	printf("Allocated 32 bytes for variable 'a'.\r\nAddress: 0x%x\r\nValue: %d\r\n", &a, a);
+	free(a);
 	return OK;
 }
