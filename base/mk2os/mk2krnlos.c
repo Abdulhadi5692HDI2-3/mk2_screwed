@@ -38,6 +38,11 @@ MK2_STATUS Mk2EntryPoint() {
 	printf("Screen Resolution: %dx%d\r\n", bootboot.fb_width, bootboot.fb_height);
 	mem_init();
 	printf("Initalized the heap!\r\n");
-	printf("Total files in initrd: %d", totalfiles(bootboot.initrd_ptr));
+	// totalfiles returns how many files are there
+	// in a tar file. (in our case the initrd)
+	printf("Total files in initrd: %d\r\n", totalfiles(bootboot.initrd_ptr));
+	printf("Testing memory allocation!\r\n");
+	int a = malloc(32);
+	printf("Allocated 32 bytes for variable 'a'.\r\nAddress: 0x%x\r\nValue: %d\r\n", &a, a);
 	return OK;
 }

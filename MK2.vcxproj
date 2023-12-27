@@ -88,8 +88,6 @@
     <ClCompile Include="base\mk2os\mk2krnlos.c" />
     <ClCompile Include="base\mk2os\screen.c" />
     <ClCompile Include="base\mk2os\serial.c" />
-    <ClCompile Include="base\mk2os\tar.c" />
-    <ClCompile Include="base\mk2os\vfs.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="base\inc\bootboot.h" />
@@ -100,7 +98,6 @@
     <ClInclude Include="base\inc\mk2\screen\screen.h" />
     <ClInclude Include="base\inc\mk2\serial.h" />
     <ClInclude Include="base\inc\mk2\tar\tar.h" />
-    <ClInclude Include="base\inc\mk2\vfs\vfs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,4 +15,4 @@ cd BOOTBOOT
 copy %INITRD% initrd
 cd ..
 cd ..
-qemu-system-x86_64.exe -M q35 -m 2G -net none -monitor none -parallel none -bios OVMF_X64.fd -hda fat:rw:dist
+qemu-system-x86_64.exe -serial stdio -m 2G -net none -monitor none -parallel none -bios OVMF_X64.fd -hda fat:rw:dist
