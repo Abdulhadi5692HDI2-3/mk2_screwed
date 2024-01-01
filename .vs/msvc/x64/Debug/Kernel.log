@@ -1,6 +1,0 @@
-﻿cl : Command line warning D9025: overriding '/sdl-' with '/GS-'
-  mk2krnlos.c
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/RELEASE' specification
-mk2krnlos.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
-  Kernel.vcxproj -> C:\Users\Abdulhadi\Desktop\MK2\x64\Debug\mk2krnlos.exe
-  Kernel.vcxproj -> C:\Users\Abdulhadi\Desktop\MK2\x64\Debug\mk2krnlos.pdb (Partial PDB)
