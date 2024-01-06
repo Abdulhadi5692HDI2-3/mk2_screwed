@@ -3,3 +3,4 @@ MK2.VC.db
 x64
 ia32
 Debug
+*.vhdx
