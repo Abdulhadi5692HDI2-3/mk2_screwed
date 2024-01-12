@@ -1,9 +1,9 @@
-/////////////////////////////////////
-// Object output name: mk2load.obj //
-// Output name: mk2load.efi        //
-// Arch: x86-64                    //
-/////////////////////////////////////
-// Code written by: Abdulhadi5692HDI2-3
+//////////////////////////////////////////
+// Object output name: mk2load.obj      //
+// Output name: mk2load.efi             //
+// Arch: x86-64                         //
+// Code written by: Abdulhadi5692HDI2-3 //
+//////////////////////////////////////////
 
 // definitions
 #define EXTERNC extern "C"
@@ -26,7 +26,8 @@ EXTERNC EFI_STATUS efi_main(EFI_HANDLE ImageHandle, EFI_SYSTEM_TABLE *SystemTabl
 	// clear the screen
 	ST->ConOut->ClearScreen(ST->ConOut);
 
-	Print(L"%HHello World!%N\r\n");
+	// Display some crap
+	Print(L"MK2 Bootloader (original output name: mk2load.efi)\r\n");
 	while (1);
 	return EFI_ABORTED;
 }

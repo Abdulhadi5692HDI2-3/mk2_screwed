@@ -1,0 +1,6 @@
+//  MK2 dirs (excluding GNU-EFI)
+boot
+boot\x64
+boot\x64\Main
+boot\x64\Main\boot.tlog
+scripts\
