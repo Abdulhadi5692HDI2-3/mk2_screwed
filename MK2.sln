@@ -10,6 +10,14 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boot", "boot\boot.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "efilib", "gnu-efi\.vs\efilib.vcxproj", "{3135D563-9596-4584-9ED6-616ADEC52974}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{82E340CA-4239-41D2-BA24-C2C251B27350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win32", "win32", "{C06242E1-CDC3-4435-B952-0A0B27BAEE98}"
+	ProjectSection(SolutionItems) = preProject
+		external\win32\types.h = external\win32\types.h
+		external\win32\winnt.h = external\win32\winnt.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -38,6 +46,7 @@ Global
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Main|ARM64.ActiveCfg = Main|x64
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Main|x64.ActiveCfg = Main|x64
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Main|x64.Build.0 = Main|x64
+		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Main|x64.Deploy.0 = Main|x64
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Main|x86.ActiveCfg = Main|x64
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Release|ARM.ActiveCfg = Main|x64
 		{8A93CC76-98DD-45F9-87FF-755FBE4642BD}.Release|ARM.Build.0 = Main|x64
@@ -61,6 +70,7 @@ Global
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|ARM64.Build.0 = Release|ARM64
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|x64.ActiveCfg = Release|x64
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|x64.Build.0 = Release|x64
+		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|x64.Deploy.0 = Release|x64
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|x86.ActiveCfg = Release|Win32
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Main|x86.Build.0 = Release|Win32
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Release|ARM.ActiveCfg = Release|ARM
@@ -74,5 +84,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C06242E1-CDC3-4435-B952-0A0B27BAEE98} = {82E340CA-4239-41D2-BA24-C2C251B27350}
 	EndGlobalSection
 EndGlobal
