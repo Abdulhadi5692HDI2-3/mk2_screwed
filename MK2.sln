@@ -10,13 +10,20 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "boot", "boot\boot.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "efilib", "gnu-efi\.vs\efilib.vcxproj", "{3135D563-9596-4584-9ED6-616ADEC52974}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{82E340CA-4239-41D2-BA24-C2C251B27350}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "useful", "useful", "{82E340CA-4239-41D2-BA24-C2C251B27350}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "win32", "win32", "{C06242E1-CDC3-4435-B952-0A0B27BAEE98}"
 	ProjectSection(SolutionItems) = preProject
 		external\win32\types.h = external\win32\types.h
 		external\win32\winnt.h = external\win32\winnt.h
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mk2", "mk2", "{3FF43B17-E8DE-44EC-A7FF-CD6FD28F3679}"
+	ProjectSection(SolutionItems) = preProject
+		useful\mk2\MK2.Defs.h = useful\mk2\MK2.Defs.h
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "krnl", "base\krnl\krnl.vcxproj", "{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,11 +88,32 @@ Global
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Release|x64.Build.0 = Release|x64
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Release|x86.ActiveCfg = Release|Win32
 		{3135D563-9596-4584-9ED6-616ADEC52974}.Release|x86.Build.0 = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|ARM.ActiveCfg = Debug|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|ARM64.ActiveCfg = Debug|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|x64.ActiveCfg = Debug|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|x64.Build.0 = Debug|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|x86.ActiveCfg = Debug|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Debug|x86.Build.0 = Debug|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|ARM.ActiveCfg = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|ARM.Build.0 = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|ARM64.ActiveCfg = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|ARM64.Build.0 = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|x64.ActiveCfg = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|x64.Build.0 = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|x86.ActiveCfg = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Main|x86.Build.0 = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|ARM.ActiveCfg = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|ARM64.ActiveCfg = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|x64.ActiveCfg = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|x64.Build.0 = Release|x64
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|x86.ActiveCfg = Release|Win32
+		{FECF52CC-2C7E-497B-A253-05B9E6EE9AB9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C06242E1-CDC3-4435-B952-0A0B27BAEE98} = {82E340CA-4239-41D2-BA24-C2C251B27350}
+		{3FF43B17-E8DE-44EC-A7FF-CD6FD28F3679} = {82E340CA-4239-41D2-BA24-C2C251B27350}
 	EndGlobalSection
 EndGlobal
