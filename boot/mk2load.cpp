@@ -5,6 +5,8 @@
 // Code written by: Abdulhadi5692HDI2-3 //
 //////////////////////////////////////////
 
+#include "../incgen/mk2ver.h"
+
 #include <mk2/MK2.Defs.h>
 // useful assert
 #include <BootAssert.h>
@@ -42,7 +44,7 @@ OUT EFI_FILE_HANDLE OpenVolume(IN EFI_HANDLE ImageHandle) {
 
 // returns a pointer to the entry point
 // very useful
-OUT PVOID LoadPE(IN CHAR16 *fname, IN EFI_HANDLE ImageHandle, OUT EFI_PHYSICAL_ADDRESS ImageBaseOut) {
+OUT HIMAGE LoadPE(IN CHAR16 *fname, IN EFI_HANDLE ImageHandle, OUT EFI_PHYSICAL_ADDRESS ImageBaseOut) {
 	BootAssert(is_uefienv);
 	
 	EFI_FILE_HANDLE Volume = OpenVolume(ImageHandle);
@@ -88,8 +90,11 @@ OUT PVOID LoadPE(IN CHAR16 *fname, IN EFI_HANDLE ImageHandle, OUT EFI_PHYSICAL_A
 	// also validate subsystem
 	BootAssert_True_Msg(NTHeader.Signature != IMAGE_NT_SIGNATURE
 						|| NTHeader.OptionalHeader.Magic != IMAGE_NT_OPTIONAL_HDR64_MAGIC
-						|| NTHeader.OptionalHeader.Subsystem != IMAGE_SUBSYSTEM_NATIVE, 
-					    L"Invalid NT Header signature, Optional Header magic and Subsystem!\r\n");
+						|| NTHeader.OptionalHeader.Subsystem != IMAGE_SUBSYSTEM_NATIVE 
+						|| NTHeader.OptionalHeader.MajorImageVersion != BUILDNUM,
+					    L"Invalid NT Header signature, Optional Header magic and Subsystem! and kernel version!\r\n");
+
+	Print(L"Kernel version: %d, Expected version: %d\r\n", NTHeader.OptionalHeader.MajorImageVersion, BUILDNUM);
 
 	// ok so now we have validated the NT Header
 	// check if kernel imports any external DLL
@@ -125,13 +130,44 @@ OUT PVOID LoadPE(IN CHAR16 *fname, IN EFI_HANDLE ImageHandle, OUT EFI_PHYSICAL_A
 	PointerNTHeader->OptionalHeader.ImageBase = BaseAddress;
 	// print whether we need to relocate
 	Print(L"Relocate?: %d (1 = true, 0 = false)\r\n", DoWeNeedToRelocate);
-	return NULL;
+
+	// relocate image to the kernel space in memory
+	IMAGE_DATA_DIRECTORY relocationDirectory = PointerNTHeader->OptionalHeader.DataDirectory[IMAGE_DIRECTORY_ENTRY_BASERELOC];
+	Print(L"Relocations: %u\r\n", relocationDirectory.Size);
+	if (relocationDirectory.Size) {
+		PIMAGE_BASE_RELOCATION PointerBaseRelocation = (PIMAGE_BASE_RELOCATION)(ImageBaseOut + relocationDirectory.VirtualAddress);
+
+		UINTN delta = (UINTN)PointerNTHeader->OptionalHeader.ImageBase - (UINTN)NTHeader.OptionalHeader.ImageBase;
+
+		while (PointerBaseRelocation->VirtualAddress) {
+			PBYTE locationBase = (PBYTE)(ImageBaseOut + PointerBaseRelocation->VirtualAddress);
+			PWORD locationData = (PWORD)((UINTN)PointerBaseRelocation + sizeof(IMAGE_BASE_RELOCATION));
+
+			for (DWORD i = 0; i < (PointerBaseRelocation->SizeOfBlock - sizeof(IMAGE_BASE_RELOCATION)) / sizeof(WORD); i++, locationData++) {
+				INT type = (*locationData >> 12);
+				INT offset = (*locationData & 0x0FFF);
+
+				switch (type) {
+				case IMAGE_REL_BASED_ABSOLUTE:
+					break;
+				case IMAGE_REL_BASED_HIGHLOW:
+					*(DWORD*)(locationBase + offset) += (DWORD)delta;
+					break;
+				case IMAGE_REL_BASED_DIR64:
+					*(UINTN*)(locationBase + offset) += delta;
+					break;
+				}
+			}
+			PointerBaseRelocation = (PIMAGE_BASE_RELOCATION)((UINTN)PointerBaseRelocation + PointerBaseRelocation->SizeOfBlock);
+		}
+	}
+	return (HIMAGE)(PointerNTHeader->OptionalHeader.ImageBase + PointerNTHeader->OptionalHeader.AddressOfEntryPoint);
 }
 EXTERNC EFI_STATUS efi_main(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *SystemTable) {
 	// Set the Status
 	EFI_STATUS Status;
 	
-	// 
+	// Out address of kernel ImageBase
 	EFI_PHYSICAL_ADDRESS IBOut;
 
 	// set ST, BS and RT variables
@@ -147,7 +183,10 @@ EXTERNC EFI_STATUS efi_main(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *Syst
 
 	// Display some info
 	Print(L"MK2 Bootloader (original output name: mk2load.efi)\r\nFirmware vendor: %s\r\n", ST->FirmwareVendor);
-	PVOID a = LoadPE(L"krnl.exe", ImageHandle, IBOut);
+	Print(L"Loading MK2 kernel! Version: %d built on %s\r\n", BUILDNUM, BUILD_DATE_TIMEW);
+	HIMAGE Kernel = LoadPE(L"krnl.exe", ImageHandle, IBOut);
+	BootAssert_True_Msg(Kernel == NULL, L"Could not load kernel successfully!\r\nLooping. . ");
+	Print(L"Address of Kernel Image: 0x%016x\r\n", Kernel);
 	while (1);
 	return EFI_ABORTED;
 }

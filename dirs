@@ -1,6 +1,9 @@
 //  MK2 dirs (excluding GNU-EFI)
+base
+base\krnl
 boot
-boot\x64
-boot\x64\Main
-boot\x64\Main\boot.tlog
-scripts\
+tools
+useful
+useful\mk2
+useful\win32
+incgen

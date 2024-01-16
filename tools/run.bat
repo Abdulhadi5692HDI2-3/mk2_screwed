@@ -29,8 +29,8 @@ mkdir emulos\EFI
 mkdir emulos\EFI\BOOT
 
 :: Copy bootloader and kernel
-copy x64\Main\mk2load.efi emulos\EFI\BOOT\BOOTX64.EFI
-copy x64\Release\krnl.exe emulos\krnl.exe
+copy %cd%\x64\Main\mk2load.efi emulos\EFI\BOOT\BOOTX64.EFI
+copy %cd%\x64\Release\krnl.exe emulos\krnl.exe
 
 :: Run the OS
 %QEMU% -net none -monitor none -parallel none -L . -pflash ovmf\X64OVMF.fd -hda fat:rw:emulos

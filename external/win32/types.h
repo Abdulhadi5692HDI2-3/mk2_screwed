@@ -12,6 +12,7 @@ typedef char CHAR;
 typedef short SHORT;
 typedef long LONG;
 
+
 #ifndef BASETYPES
 #define BASETYPES
 typedef unsigned long ULONG;
@@ -83,6 +84,13 @@ typedef DWORD * LPDWORD;
 
 typedef BYTE* PBYTE;
 typedef BYTE* LPBYTE;
+
+//
+// Other things
+//
+typedef PVOID HANDLE;
+typedef HANDLE HIMAGE;
+typedef HANDLE HMODULE;
 
 //
 // Boolean
