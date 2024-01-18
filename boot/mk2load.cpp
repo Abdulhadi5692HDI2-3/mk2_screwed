@@ -200,7 +200,7 @@ EXTERNC EFI_STATUS efi_main(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *Syst
 	BootAssert_True_Msg(Kernel == NULL, L"Could not load kernel successfully!\r\nLooping. . ");
 	Print(L"Address of Kernel Image: 0x%016x\r\n", Kernel);
 	Status = SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, NULL);
-	VOID(__cdecl *_Kernel)(KernelParams) = (VOID(*)(KernelParams))(Kernel);
+	VOID(__cdecl *_Kernel)(KernelParams) = (VOID(__cdecl *)(KernelParams))(Kernel);
 	_Kernel(KParams);
 	while (1);
 	return EFI_ABORTED;
