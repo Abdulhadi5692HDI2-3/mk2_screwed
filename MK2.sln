@@ -21,6 +21,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "mk2", "mk2", "{3FF43B17-E8DE-44EC-A7FF-CD6FD28F3679}"
 	ProjectSection(SolutionItems) = preProject
 		external\mk2\MK2.Defs.h = external\mk2\MK2.Defs.h
+		MK2.KernelParams.h = MK2.KernelParams.h
 		external\mk2\MK2.Utils.h = external\mk2\MK2.Utils.h
 	EndProjectSection
 EndProject

@@ -1,6 +1,15 @@
 MK2
 ===========================
 
+
+Before compiling
+===========================
+Do `git submodule init` and
+`git submodule update` to 
+fetch the gnu-efi module.
+Not doing this would result
+in the project being unbuiltable.
+
 How to compile
 ===========================
 Open a Visual Studio Cross Tools x64 command prompt and 

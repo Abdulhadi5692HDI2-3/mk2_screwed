@@ -7,9 +7,11 @@
 
 #include "../incgen/mk2ver.h"
 
+#include <mk2/MK2.KernelParams.h>
 #include <mk2/MK2.Defs.h>
 // useful assert
 #include <BootAssert.h>
+
 
 // fix LNK1120 and LNK2019
 EXTERNC {
@@ -20,13 +22,12 @@ EXTERNC {
 #include <win32/types.h>
 #include <win32/winnt.h>
 
-// variables
+
 BOOLEAN is_uefienv = true;
-static constexpr CHAR16 KernelFName[] = L"mk2krnlos.exe";
-static constexpr INT MaxKernelPathSz = 64;
+static CHAR16 KernelFName[] = L"mk2krnlos.exe";
+static INT MaxKernelPathSz = 64;
 
-EFI_MEMORY_TYPE AllocType;
-
+KernelParams KParams = { 0 };
 // returns volume
 // which has a read / close / open abstraction
 OUT EFI_FILE_HANDLE OpenVolume(IN EFI_HANDLE ImageHandle) {
@@ -122,6 +123,8 @@ OUT HIMAGE LoadPE(IN CHAR16 *fname, IN EFI_HANDLE ImageHandle, OUT EFI_PHYSICAL_
 			FileHandle->SetPosition(FileHandle, section[i].PointerToRawData);
 			FileHandle->Read(FileHandle, &rawSize, (VOID*)destination);
 		}
+
+		Print(L"Section #%d\r\nSection Virtual Address: 0x%x\r\n", i, section[i].VirtualAddress);
 	}
 	// do we need to relocate
 	bool DoWeNeedToRelocate = PointerNTHeader->OptionalHeader.ImageBase != BaseAddress;
@@ -168,7 +171,7 @@ EXTERNC EFI_STATUS efi_main(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *Syst
 	EFI_STATUS Status;
 	
 	// Out address of kernel ImageBase
-	EFI_PHYSICAL_ADDRESS IBOut;
+	EFI_PHYSICAL_ADDRESS IBOut = 0x0000000000000000;
 
 	// set ST, BS and RT variables
 	ST = SystemTable;
@@ -183,10 +186,22 @@ EXTERNC EFI_STATUS efi_main(IN EFI_HANDLE ImageHandle, IN EFI_SYSTEM_TABLE *Syst
 
 	// Display some info
 	Print(L"MK2 Bootloader (original output name: mk2load.efi)\r\nFirmware vendor: %s\r\n", ST->FirmwareVendor);
+
+	// Print the time!
+	EFI_TIME Time;
+	RT->GetTime(&Time, nullptr);
+	Print(L"Date: %02d-%02d-%02d. Time: %02d:%02d:%02d\r\n", Time.Day, Time.Month, Time.Year);
+
+	// Fill Kernel Parameters in!
+
+	// Load the kernel!
 	Print(L"Loading MK2 kernel! Version: %d built on %s\r\n", BUILDNUM, BUILD_DATE_TIMEW);
 	HIMAGE Kernel = LoadPE(L"krnl.exe", ImageHandle, IBOut);
 	BootAssert_True_Msg(Kernel == NULL, L"Could not load kernel successfully!\r\nLooping. . ");
 	Print(L"Address of Kernel Image: 0x%016x\r\n", Kernel);
+	Status = SystemTable->ConIn->ReadKeyStroke(SystemTable->ConIn, NULL);
+	VOID(__cdecl *_Kernel)(KernelParams) = (VOID(*)(KernelParams))(Kernel);
+	_Kernel(KParams);
 	while (1);
 	return EFI_ABORTED;
 }
