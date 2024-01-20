@@ -1,0 +1,9 @@
+##########################
+# Makefile for MK2       #
+##########################
+
+all: build
+
+build:
+	masm386 W:\base\boot\boot.asm W:\base\boot\boot.obj NUL NUL
+	link16 /TINY /NOD W:\base\boot\boot.obj, W:\base\boot\boot.bin, NUL, NUL, NUL
