@@ -1,9 +1,0 @@
-//  MK2 dirs (excluding GNU-EFI)
-base
-base\krnl
-boot
-tools
-useful
-useful\mk2
-useful\win32
-incgen
