@@ -5,5 +5,24 @@
 all: build
 
 build:
+	ech BUILD: Building base\boot
 	masm386 W:\base\boot\boot.asm W:\base\boot\boot.obj NUL NUL
+	masm386 W:\base\boot\mk2ldr.asm W:\base\boot\mk2ldr.obj NUL NUL
 	link16 /TINY /NOD W:\base\boot\boot.obj, W:\base\boot\boot.bin, NUL, NUL, NUL
+	link16 /TINY /NOD W:\base\boot\mk2ldr.obj, W:\base\boot\mk2ldr.sys, NUL, NUL, NUL
+	ech BUILD: Ended building base\boot
+
+copytofloppy:
+	ech !!! WARNING !!!
+	ech THIS WILL OVERWRITE THE DRIVE in A:
+	ech TYPE CTRL+BREAK to STOP (OR CTRL+C)
+	@PAUSE
+	wdd if=base\boot\boot.bin of=\\.\A:
+	copy base\boot\mk2ldr.sys A:\mk2ldr_.sys
+	ech THE A DRIVE WAS OVERWRITTEN WITH A BOOTLOADER AND STAGE2 BOOTLOADER.
+	ech YOU CAN THEN BOOT FROM THE A DRIVE TO BOOT INTO MK2.
+
+clean:
+	del base\boot\*.bin
+	del base\boot\*.obj
+	del base\boot\*.sys
