@@ -1,5 +1,5 @@
 @ECHO OFF
-pushd tools
-start missile.bat
-popd tools
+pushd W:\tools
+start %CD%\missile.bat
+popd
 exit /b 0

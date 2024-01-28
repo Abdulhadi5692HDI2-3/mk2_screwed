@@ -10,10 +10,7 @@
 
 ; OEM Parameter block
 ; STARTOEMBLOCK
-	OSName			  db "MSWIN"
-	OSVersion         db "4.1"      ; Version number
-	
-    OEMName	          db "BOOT    " ; Disk label
+    OEMName	          db "MSWIN4.1" ; Disk label
     bytesPerSector    dw 512	    ; Bytes per sector
     sectorsPerCluster db 1			; Sectors per cluster
     reservedSectors   dw 1			; Reserved sectors
@@ -30,6 +27,6 @@
     reserved	      db 0			; Reserved
     bootSignature     db 41			; Drive signature
     volumeId	      dd 0			; Volume ID
-    volumeLabel	      db "BOOT VOLUME" ; Volume Label
+    volumeLabel	      db "NO NAME    " ; Volume Label
     fatTypeLabel      db "FAT12   "	   ; File system type
 ; ENDOEMBLOCK
