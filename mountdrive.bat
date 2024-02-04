@@ -1,16 +1,3 @@
-@echo off
-:::::::::::::::::::::::::::::::::::::::::::::::
-:: Script name: mountdrive.bat
-::
-:: Abstract:
-::  Mount the repo dir to the W: drive
-::  Set the _MK2_DRIVE environment variable
-::
-:: Copyright (c) Abdulhadi5692HDI2-3 2024-2024.
-:: It license under MIT License
-:::::::::::::::::::::::::::::::::::::::::::::::
-if exist %temp%\W_drive.bool echo W: is already mounted! Try unmounting with unmountdrive.bat! && exit /b 1
-@echo true > %temp%\W_drive.bool
-subst W: .
-set _MK2_DRIVE=W:
-exit /b %errorlevel%
+version https://git-lfs.github.com/spec/v1
+oid sha256:e79373af360d119acbde7bcd01cc096fdca757e41f4365abf38680d05a809dd6
+size 478

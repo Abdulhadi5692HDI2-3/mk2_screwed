@@ -1,9 +1,3 @@
-# Sources
-
-MODULEDIR=base\boot
-
-SOURCES=boot.asm
-
-OBJS=boot.obj
-	 
-BINS=boot.bin
+version https://git-lfs.github.com/spec/v1
+oid sha256:63b3bcffb19a5e4fc4b6fc1c24734a61742455b010d7f8e5d4c34b9b81c282fd
+size 88

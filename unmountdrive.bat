@@ -1,15 +1,3 @@
-@echo off
-:::::::::::::::::::::::::::::::::::::::::::::::
-:: Script name: unmountdrive.bat
-::
-:: Abstract:
-::  Unmount the W: drive
-::  Set the _MK2_DRIVE variable to _NODRIVE
-::
-:: Copyright (c) Abdulhadi5692HDI2-3 2024-2024.
-:: It license under MIT License
-:::::::::::::::::::::::::::::::::::::::::::::::
-if exist %temp%\W_drive.bool del %temp%\W_drive.bool
-subst W: /d
-set _MK2_DRIVE=_NODRIVE
-exit /b %errorlevel
+version https://git-lfs.github.com/spec/v1
+oid sha256:0178f7fb7e9a4f91f79731aa0178a6bbfecc35ede99250d5629994a3eebf8866
+size 421
